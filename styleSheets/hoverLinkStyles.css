@@ -1,81 +1,101 @@
 /* style & layout */
 html, body {
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	font-size: 1.2rem;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-size: 1.2rem;
+  font-family: sans-serif;
 }
 section {
-	height: 100%;
-	width: 100%;
-	background-color: #262626;
+  height: 100%;
+  width: 100%;
+  background-color: #262626;
 }
 .links {
-	position: relative;
-	width: 100%;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	text-align: center;
-	margin: 0;
-	padding: 0;
+  position: relative;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 a {
-	text-decoration: none;
-	text-transform: uppercase;
-	color: #424242;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #424242;
 }
 /* /style & layout */
 
-/* Strangers */
-.plain {
-	padding: 9px 0;
-  	border-bottom: 1px solid rgba(255, 255, 255, 0); /* iOS double-tap */
-}
-.plain:hover {
-	border-bottom: 1px solid rgba(255, 255, 255, 1);
+/* Plain */
+.underline.plain::after {
+  -webkit-transition: all 0s;
+  transition: all 0s;
 }
 
-/* Minnesota */
+/* Left 2 Right */
 .container {
-	padding: 10px 0;
-	position: relative;
-	display: inline-block;
-	margin: 0 25%;
+  padding: 10px 0;
+  position: relative;
+  display: inline-block;
+  margin: 0 25%;
 }
 .underline::after {
-	position: absolute;
-	top: 95%;
-	left: 0;
-	content: "";
-	height: 1px;
-	width: 0.001px;	/*! onclick, iOS double-tap feature triggers the hover state of content that isn't visible. To avoid this we can make content "technically", but not really, visible !*/
-	background-color: white;
-	-webkit-transition: all 0.15s ease-in-out;
-	transition: all 0.15s ease-in-out;
+  position: absolute;
+  top: 90%;
+  left: 0;
+  content: "";
+  height: 1px;
+  width: 0.001px;  /*! onclick, iOS double-tap feature triggers the hover state of content that isn't visible. To avoid this we can make content "technically", but not actually, visible !*/
+  background-color: white;
+  -webkit-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 .underline:hover::after {
-	width: 100%;
+  width: 100%;
 }
 
-/* Make it Wit Chu */
+/* Right 2 Left */
 .underline.r2L::after {
-	left: 100%;
+  left: 100%;
 }
 .underline.r2L:hover::after {
-	left: 0;
+  left: 0;
 }
 
-/* Skanky Panky */
+/* Center Out */
 .underline.cOut::after {
-	left: 50%;
+  left: 50%;
 }
 .underline.cOut:hover::after {
-	left: 0;
+  left: 0;
 }
 
-/* Go Back Home */
-.fade {
-	-webkit-transition: all 0.3s ease-in-out;
+/* Fade */
+.underline.fade::after {
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.underline.fade:hover::after {
+  opacity: 1;
+}
+
+/* Sticky Hover */
+.underline.l2R.clicked::after, .underline.plain.clicked::after {
+  width: 0.01px;
+}
+.underline.r2L.clicked::after {
+  width: 0.01px;
+  left: 100%;
+}
+.underline.cOut.clicked::after {
+  width: 0.01px;
+  left: 50%;
+}
+.underline.fade.clicked::after {
+  opacity: 0;
 }
